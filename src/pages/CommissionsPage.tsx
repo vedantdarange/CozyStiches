@@ -4,6 +4,7 @@ import { Upload, Calendar, CheckCircle, XCircle } from 'lucide-react';
 import { YarnButton } from '../components/YarnButton';
 import { useShop } from '../context/ShopContext';
 import { CountdownTimer } from '@/components/custom/CountdownTimer';
+import { ParallaxScroll } from '@/components/aceternity/parallax-scroll';
 
 export const CommissionsPage = () => {
     const { commissionSlots, totalSlots, submitCommission } = useShop();
@@ -20,6 +21,19 @@ export const CommissionsPage = () => {
     // Set target date to 7 days from now for commission slot deadline
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 7);
+
+    // Gallery images for past custom creations (placeholder gradients)
+    const galleryImages = [
+        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop", // Crochet bag
+        "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400&h=400&fit=crop", // Yarn
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop", // Crochet items
+        "https://images.unsplash.com/photo-1611095564515-2f0a6e5e6e9e?w=400&h=400&fit=crop", // Handmade
+        "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=400&h=400&fit=crop", // Crochet
+        "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?w=400&h=400&fit=crop", // Crafts
+        "https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=400&h=400&fit=crop", // Yarn balls
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop", // Crochet work
+        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop", // Bags
+    ];
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
