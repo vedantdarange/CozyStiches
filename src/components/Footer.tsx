@@ -49,7 +49,13 @@ export const Footer = () => {
             </div>
             <div className="border-t border-sage/20 pt-6 text-center text-sage">
                 <p className="flex items-center justify-center gap-1">
-                    © 2025 Made with <Heart className="w-4 h-4 text-dustyRose fill-dustyRose" /> by Vedant
+                    © 2025 Made with <Heart className="w-4 h-4 text-dustyRose fill-dustyRose" /> by{' '}
+                    <Link
+                        to="/credits"
+                        className="text-terracotta font-medium hover:text-clay transition-colors underline decoration-dotted underline-offset-4"
+                    >
+                        Vedant Darange
+                    </Link>
                 </p>
             </div>
         </motion.footer>

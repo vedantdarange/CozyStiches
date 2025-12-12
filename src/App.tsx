@@ -17,6 +17,7 @@ import { CheckoutPage } from './pages/CheckoutPage';
 import { AdminPage } from './pages/AdminPage';
 import { CareInstructionsPage } from './pages/CareInstructionsPage';
 import { SizingGuidePage } from './pages/SizingGuidePage';
+import { CreditsPage } from './pages/CreditsPage';
 
 function App() {
     return (
@@ -59,6 +60,7 @@ function App() {
                             <Route path="/admin" element={<AdminPage />} />
                             <Route path="/care-instructions" element={<CareInstructionsPage />} />
                             <Route path="/sizing-guide" element={<SizingGuidePage />} />
+                            <Route path="/credits" element={<CreditsPage />} />
                         </Routes>
                     </AnimatePresence>
                     <Footer />
