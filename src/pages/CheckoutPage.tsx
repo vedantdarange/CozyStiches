@@ -3,10 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, CreditCard, Truck, User, Phone } from 'lucide-react';
 import { YarnButton } from '../components/YarnButton';
 import { useShop } from '../context/ShopContext';
+import { ProgressBar } from '@/components/custom/ProgressBar';
+import { Confetti } from '@/components/custom/Confetti';
 
 export const CheckoutPage = () => {
     const { cart } = useShop();
     const [step, setStep] = useState(1);
+    const [showConfetti, setShowConfetti] = useState(false);
     const [shippingInfo, setShippingInfo] = useState({
         name: '',
         phone: '',

@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { ShopProvider } from './context/ShopContext';
+import { LiveIndicators } from '@/components/custom/LiveIndicators';
 import { LandingPage } from './pages/LandingPage';
 import { ShopPage } from './pages/ShopPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
@@ -22,6 +23,7 @@ function App() {
         <ShopProvider>
             <BrowserRouter>
                 <ScrollToTop />
+                <LiveIndicators />
                 <Toaster
                     position="top-center"
                     toastOptions={{

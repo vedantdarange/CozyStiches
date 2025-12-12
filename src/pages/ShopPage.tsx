@@ -3,11 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, X } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { YarnButton } from '../components/YarnButton';
+import { Tabs } from '@/components/aceternity/animated-tabs';
 
 export const ShopPage = () => {
     const [search, setSearch] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [showFilters, setShowFilters] = useState(false);
+
+    const categories = [
+        { title: 'All', value: 'all', content: null },
+        { title: 'Bags', value: 'bags', content: null },
+        { title: 'Apparel', value: 'apparel', content: null },
+        { title: 'Home Decor', value: 'home', content: null },
+        { title: 'Accessories', value: 'accessories', content: null },
+    ];
 
     return (
         <div className="min-h-screen bg-cream pt-24 pb-12 px-6">
@@ -45,6 +54,22 @@ export const ShopPage = () => {
                     </YarnButton>
                 </motion.div>
 
+                {/* Animated Category Tabs */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="mb-8"
+                >
+                    <Tabs
+                        tabs={categories}
+                        containerClassName="mb-8"
+                        activeTabClassName="bg-terracotta"
+                        tabClassName="text-sm md:text-base"
+                        onChange={(value) => setSelectedCategory(value)}
+                    />
+                </motion.div>
+
                 {/* Filter Panel */}
                 <AnimatePresence>
                     {showFilters && (
@@ -67,8 +92,8 @@ export const ShopPage = () => {
                                         whileHover={{ scale: 1.05 }}
                                         onClick={() => setSelectedCategory(cat)}
                                         className={`px-4 py-2 rounded-full capitalize ${selectedCategory === cat
-                                                ? 'bg-terracotta text-cream'
-                                                : 'bg-cream text-clay border border-sage/30'
+                                            ? 'bg-terracotta text-cream'
+                                            : 'bg-cream text-clay border border-sage/30'
                                             }`}
                                     >
                                         {cat}

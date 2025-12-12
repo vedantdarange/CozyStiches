@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Calendar, CheckCircle, XCircle } from 'lucide-react';
 import { YarnButton } from '../components/YarnButton';
 import { useShop } from '../context/ShopContext';
+import { CountdownTimer } from '@/components/custom/CountdownTimer';
 
 export const CommissionsPage = () => {
     const { commissionSlots, totalSlots, submitCommission } = useShop();
@@ -15,6 +16,10 @@ export const CommissionsPage = () => {
         budget: ''
     });
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+
+    // Set target date to 7 days from now for commission slot deadline
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 7);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -88,6 +93,19 @@ export const CommissionsPage = () => {
                                 ? 'Hurry! Limited slots left!'
                                 : 'Slots available - grab yours!'}
                     </motion.p>
+
+                    {/* Countdown Timer */}
+                    {commissionSlots > 0 && commissionSlots < 3 && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8 }}
+                            className="mt-6 pt-6 border-t border-sage/20"
+                        >
+                            <p className="text-clay font-medium mb-4">⏰ Limited Time Offer Ends In:</p>
+                            <CountdownTimer targetDate={targetDate} className="scale-90" />
+                        </motion.div>
+                    )}
                 </motion.div>
 
                 {/* Form */}

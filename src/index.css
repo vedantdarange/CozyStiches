@@ -28,7 +28,7 @@
 
     15%,
     35% {
-      transform: translate Z(0) rotate(90deg);
+      transform: translateZ(0) rotate(90deg);
     }
 
     65%,
@@ -41,11 +41,21 @@
     }
   }
 
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
   .animate-shimmer-slide {
     animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
   }
 
   .animate-spin-around {
     animation: spin-around calc(var(--speed) * 2) infinite linear;
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
   }
 }

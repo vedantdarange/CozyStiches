@@ -3,6 +3,35 @@ import { Link } from 'react-router-dom';
 import { YarnButton } from '../components/YarnButton';
 import { ArrowRight, Heart, Clock, Package } from 'lucide-react';
 import { BackgroundBeams } from '@/components/aceternity/background-beams';
+import { InfiniteMovingCards } from '@/components/aceternity/infinite-moving-cards';
+
+const testimonials = [
+    {
+        quote: "The crochet bag I ordered is absolutely stunning! The quality is amazing and I get compliments everywhere I go. Worth every penny!",
+        name: "Priya Sharma",
+        title: "Mumbai, Maharashtra"
+    },
+    {
+        quote: "I commissioned a custom baby blanket and the attention to detail was incredible. It's now a family heirloom. Thank you!",
+        name: "Rahul Verma",
+        title: "Delhi, NCR"
+    },
+    {
+        quote: "The coasters set is perfect for my home! Beautifully made, sustainable, and adds such a cozy touch to my living room.",
+        name: "Ananya Patel",
+        title: "Bangalore, Karnataka"
+    },
+    {
+        quote: "Fast shipping, excellent packaging, and the product exceeded my expectations. Will definitely order again!",
+        name: "Vikram Singh",
+        title: "Pune, Maharashtra"
+    },
+    {
+        quote: "I love supporting handmade businesses and this shop is a gem! The craftsmanship is top-notch and the customer service is wonderful.",
+        name: "Meera Reddy",
+        title: "Hyderabad, Telangana"
+    },
+];
 
 export const LandingPage = () => {
     return (
@@ -92,6 +121,34 @@ export const LandingPage = () => {
                             <p className="text-sage">{feature.desc}</p>
                         </motion.div>
                     ))}
+                </div>
+            </section>
+
+            {/* Testimonials Section */}
+            <section className="py-20 px-6 bg-linen/50">
+                <div className="max-w-7xl mx-auto">
+                    <motion.h2
+                        className="font-serif text-4xl text-center text-clay mb-4"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        What Our Customers Say
+                    </motion.h2>
+                    <motion.p
+                        className="text-center text-sage mb-12 max-w-2xl mx-auto"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Every piece is made with love, and our customers feel it ✨
+                    </motion.p>
+                    <InfiniteMovingCards
+                        items={testimonials}
+                        direction="right"
+                        speed="slow"
+                    />
                 </div>
             </section>
 
