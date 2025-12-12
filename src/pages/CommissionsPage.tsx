@@ -190,15 +190,42 @@ export const CommissionsPage = () => {
                                 onChange={(e) => setUploadedFiles(Array.from(e.target.files || []))}
                             />
                         </motion.label>
+
+                        {/* Image Preview Thumbnails */}
                         <AnimatePresence>
                             {uploadedFiles.length > 0 && (
-                                <motion.p
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    className="text-sage mt-2"
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="flex gap-4 mt-4 flex-wrap"
                                 >
-                                    {uploadedFiles.length} file(s) selected
-                                </motion.p>
+                                    {uploadedFiles.map((file, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.8 }}
+                                            className="relative w-20 h-20 group"
+                                        >
+                                            <img
+                                                src={URL.createObjectURL(file)}
+                                                alt={`Preview ${i + 1}`}
+                                                className="w-full h-full object-cover rounded-lg border-2 border-sage/30"
+                                            />
+                                            <motion.button
+                                                type="button"
+                                                whileHover={{ scale: 1.1 }}
+                                                whileTap={{ scale: 0.9 }}
+                                                onClick={() => setUploadedFiles(files => files.filter((_, index) => index !== i))}
+                                                className="absolute -top-2 -right-2 bg-dustyRose text-cream rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                                                aria-label={`Remove image ${i + 1}`}
+                                            >
+                                                <XCircle className="w-4 h-4" />
+                                            </motion.button>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
                             )}
                         </AnimatePresence>
                     </div>

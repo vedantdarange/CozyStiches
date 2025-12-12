@@ -1,4 +1,5 @@
 import { createContext, useState, useContext, ReactNode } from 'react';
+import toast from 'react-hot-toast';
 
 interface Product {
     id: string;
@@ -59,11 +60,32 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
     const totalSlots = 5;
 
     const addToCart = (product: Product, variant: CartItem['selectedVariant'] = {}) => {
-        setCart(prev => [...prev, { ...product, quantity: 1, selectedVariant: variant }]);
+        // Check if item already exists in cart
+        const existingItemIndex = cart.findIndex(
+            item => item.id === product.id &&
+                item.selectedVariant.size === variant.size &&
+                item.selectedVariant.color === variant.color &&
+                item.selectedVariant.material === variant.material
+        );
+
+        if (existingItemIndex !== -1) {
+            // Item exists, increase quantity
+            setCart(prev => prev.map((item, index) =>
+                index === existingItemIndex
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            ));
+            toast.success(`Increased quantity of ${product.name}! 🧶`);
+        } else {
+            // New item, add to cart
+            setCart(prev => [...prev, { ...product, quantity: 1, selectedVariant: variant }]);
+            toast.success(`Added ${product.name} to cart! 🛒`);
+        }
     };
 
     const removeFromCart = (id: string) => {
         setCart(prev => prev.filter(item => item.id !== id));
+        toast.success('Item removed from cart');
     };
 
     const updateQuantity = (id: string, quantity: number) => {
@@ -78,6 +100,7 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
             date: new Date().toISOString()
         };
         setCommissionRequests(prev => [...prev, newRequest]);
+        toast.success('Commission request submitted! We\'ll get back to you soon. 💌');
     };
 
     return (
@@ -95,3 +118,4 @@ export const useShop = () => {
     if (!context) throw new Error('useShop must be used within ShopProvider');
     return context;
 };
+export type { Product, CartItem };

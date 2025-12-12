@@ -40,6 +40,7 @@ export const Navbar = () => {
                         whileHover={{ scale: 1.1 }}
                         className="p-2 rounded-full hover:bg-sage/10"
                         onClick={() => navigate('/login')}
+                        aria-label="User account"
                     >
                         <User className="w-5 h-5 text-clay" />
                     </motion.button>
@@ -48,6 +49,7 @@ export const Navbar = () => {
                         whileHover={{ scale: 1.1 }}
                         className="relative p-2"
                         onClick={() => navigate('/cart')}
+                        aria-label={`Shopping cart with ${cartCount} items`}
                     >
                         <ShoppingCart className="w-5 h-5 text-clay" />
                         <AnimatePresence>
@@ -64,7 +66,11 @@ export const Navbar = () => {
                         </AnimatePresence>
                     </motion.button>
 
-                    <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+                    <button
+                        className="md:hidden"
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                    >
                         {isOpen ? <X /> : <Menu />}
                     </button>
                 </div>
