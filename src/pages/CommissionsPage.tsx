@@ -273,29 +273,18 @@ export const CommissionsPage = () => {
                     </motion.div>
                 </motion.form>
 
-                {/* Past Custom Gallery */}
+                {/* Past Custom Gallery with Parallax Scroll */}
                 <motion.section
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     className="mt-16"
                 >
-                    <h2 className="font-serif text-3xl text-clay text-center mb-8">Past Custom Creations</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {[1, 2, 3, 4, 5, 6].map(i => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ scale: 1.05, y: -10 }}
-                                className="bg-linen rounded-2xl overflow-hidden shadow-lg"
-                            >
-                                <div className="h-48 bg-gradient-to-br from-terracotta/30 to-dustyRose/30" />
-                                <div className="p-4">
-                                    <h3 className="font-serif text-clay">Custom {i % 2 === 0 ? 'Baby Blanket' : 'Laptop Sleeve'}</h3>
-                                    <p className="text-sage text-sm">Made for @customer{i}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <h2 className="font-serif text-3xl text-clay text-center mb-4">Past Custom Creations</h2>
+                    <p className="text-center text-sage mb-8 max-w-2xl mx-auto">
+                        Scroll through our gallery of beautiful custom pieces we've created for happy customers ✨
+                    </p>
+                    <ParallaxScroll images={galleryImages} className="w-full" />
                 </motion.section>
             </div>
         </div>
