@@ -18,8 +18,16 @@
         "jsx": "react-jsx",
         /* Linting */
         "strict": true,
-    "noUnusedLocals": false,        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noUnusedLocals": false,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        /* Path Aliases */
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
     "include": [
         "src"

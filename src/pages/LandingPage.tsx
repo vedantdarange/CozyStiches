@@ -2,19 +2,23 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { YarnButton } from '../components/YarnButton';
 import { ArrowRight, Heart, Clock, Package } from 'lucide-react';
+import { BackgroundBeams } from '@/components/aceternity/background-beams';
 
 export const LandingPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-cream to-linen">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center px-6">
+            <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+                {/* Background Beams Effect */}
+                <BackgroundBeams className="opacity-40" />
+
                 <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-sage/10 via-transparent to-terracotta/10"
+                    className="absolute inset-0 bg-gradient-to-br from-sage/10 via-transparent to-terracotta/10 pointer-events-none"
                     animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
                     transition={{ duration: 20, repeat: Infinity }}
                 />
 
-                <div className="max-w-4xl mx-auto text-center z-10">
+                <div className="max-w-4xl mx-auto text-center z-10 relative">
                     <motion.h1
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
