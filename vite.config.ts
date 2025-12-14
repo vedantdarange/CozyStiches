@@ -11,6 +11,7 @@ export default defineConfig({
             registerType: 'autoUpdate',
             includeAssets: ['icon-192x192.png', 'icon-512x512.png', 'apple-touch-icon.png'],
             manifest: {
+                id: '/',
                 name: 'CozyStitches',
                 short_name: 'CozyStitches',
                 description: 'Handmade Crochet Creations - Beautiful handcrafted crochet items made with love',
@@ -19,23 +20,40 @@ export default defineConfig({
                 display: 'standalone',
                 orientation: 'portrait-primary',
                 start_url: '/',
+                scope: '/',
+                lang: 'en-US',
+                dir: 'ltr',
+                categories: ['shopping', 'lifestyle'],
                 icons: [
                     {
                         src: '/icon-192x192.png',
                         sizes: '192x192',
                         type: 'image/png',
-                        purpose: 'any maskable'
+                        purpose: 'any'
+                    },
+                    {
+                        src: '/icon-192x192.png',
+                        sizes: '192x192',
+                        type: 'image/png',
+                        purpose: 'maskable'
                     },
                     {
                         src: '/icon-512x512.png',
                         sizes: '512x512',
                         type: 'image/png',
-                        purpose: 'any maskable'
+                        purpose: 'any'
+                    },
+                    {
+                        src: '/icon-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png',
+                        purpose: 'maskable'
                     },
                     {
                         src: '/apple-touch-icon.png',
                         sizes: '180x180',
-                        type: 'image/png'
+                        type: 'image/png',
+                        purpose: 'any'
                     }
                 ]
             },
